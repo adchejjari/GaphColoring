@@ -15,6 +15,8 @@ public class Coloration {
 
     public Coloration(String file, int ncolors) {
         // Public constructor, takes file path & k number as parameters
+        this.k = ncolors;
+        readFile(file);
 
     }
 
@@ -58,7 +60,10 @@ public class Coloration {
 
     private Boolean canColor(int c, int v) {
         // Method to test if the vertex v can be colored with color c
-
+        for (int i = 0; i < adjacencyList.get(v).size(); i++) {
+            if (adjacencyList.get(v).get(i) == c)
+                return false;
+        }
         return true;
     }
 
