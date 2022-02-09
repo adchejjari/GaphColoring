@@ -33,7 +33,25 @@ public class Coloration {
 
     private void readFile(String path) {
         // Private method to read file and build a graph
-
+        try {
+            File gFile = new File(path);
+            Scanner _scanner = new Scanner(gFile);
+            if (_scanner.hasNextLine())
+                this.NofVertices = _scanner.nextInt(); // read number of vertices on the first line
+            colors = new int[this.NofVertices];
+            adjacencyList = new ArrayList<ArrayList<Integer>>(NofVertices);
+            for (int i = 0; i < this.NofVertices; i++) {
+                adjacencyList.add(new ArrayList<Integer>());
+            }
+            while (_scanner.hasNextLine()) {
+                int v = _scanner.nextInt();
+                int n = _scanner.nextInt();
+                addNeighbor(v, n);
+            }
+            _scanner.close();
+        } catch (FileNotFoundException e) { // Handle error in case of error
+            System.out.println("An error has occured while reading the file");
+        }
     }
 
     private Boolean canColor(int c, int v) {
