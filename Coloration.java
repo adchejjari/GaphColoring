@@ -28,6 +28,8 @@ public class Coloration {
     private void addNeighbor(int vertex, int neighbor) {
         // Private method to add neighbor to a vertex (add edge between two vertices
         // given as arguments)
+        adjacencyList.get(vertex - 1).add(neighbor); // add neighbor to vertex's adjacency list
+        adjacencyList.get(neighbor - 1).add(vertex); // add vertex to neighbor's adjacency list
 
     }
 
