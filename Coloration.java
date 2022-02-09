@@ -68,7 +68,18 @@ public class Coloration {
     }
 
     public Boolean Coloring(int vertex) {
-
+        // Recursif method for coloration, coloration starts from the vertex given as
+        // parameter
+        if (vertex == NofVertices) // if all vertices are colored, return true
+            return true;
+        for (int c = 1; c <= this.k; c++) { // loop over all colors
+            if (canColor(c, vertex)) {
+                colors[vertex] = c; // color graph if possible
+                if (Coloring(vertex + 1)) // color next vertex
+                    return true;
+                colors[vertex] = 0; // If color c can't lead to a solution then remove it by assigning 0
+            }
+        }
         return false;
     }
 
