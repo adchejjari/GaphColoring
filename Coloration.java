@@ -86,7 +86,11 @@ public class Coloration {
     public static void main(String[] args) {
         // Main method
         if (args.length == 2) { // check if 2 arguments are given
-
+            String file = args[0];
+            int k = Integer.parseInt(args[1]);
+            Coloration graph = new Coloration(file, k); // create coloration object
+            if (graph.Coloring(0)) // start coloring
+                graph.colorationDisplay();
         }
     }
 
